@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/public:/var/www/html
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - php
+    environment:
+      - NGINX_HOST=localhost
+
+  php:
+    image: php:7.4-fpm
+    volumes:
+      - ./app:/var/www/html
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=spacerunner
+      - MYSQL_USER=spacerunner
+      - MYSQL_PASSWORD=spacerunner
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=Michael23
+      - MYSQL_DATABASE=spacerunner
+      - MYSQL_USER=spacerunner
+      - MYSQL_PASSWORD=spacerunner
+    volumes:
+      - ./mysql:/var/lib/mysql
+
