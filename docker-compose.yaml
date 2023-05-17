@@ -4,37 +4,36 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - 80:80
+      - 8000:80
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/public:/var/www/html
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./public:/var/www/html
     depends_on:
       - php
-    environment:
-      - NGINX_HOST=localhost
+    networks:
+      - lemp_network
 
   php:
-    image: php:7.4-fpm
+    image: php:latest
     volumes:
-      - ./app:/var/www/html
-    depends_on:
-      - mysql
-    environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_DATABASE=spacerunner
-      - MYSQL_USER=spacerunner
-      - MYSQL_PASSWORD=spacerunner
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+      - ./public:/var/www/html
+    networks:
+      - lemp_network
 
   mysql:
     image: mysql:latest
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=Michael23
-      - MYSQL_DATABASE=spacerunner
-      - MYSQL_USER=spacerunner
-      - MYSQL_PASSWORD=spacerunner
+      - MYSQL_ROOT_PASSWORD=your_password
+      - MYSQL_DATABASE=your_database
+      - MYSQL_USER=your_username
+      - MYSQL_PASSWORD=your_password
     volumes:
       - ./mysql:/var/lib/mysql
+    networks:
+      - lemp_network
 
+networks:
+  lemp_network:
