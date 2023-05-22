@@ -1,0 +1,24 @@
+# Ignore development files
+.git
+.gitignore
+README.md
+
+# Ignore build artifacts
+node_modules
+vendor
+
+# Ignore editor and IDE files
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Ignore temporary files
+*.swp
+*.swo
+*.log
+*.bak
+
+# Ignore specific project files
+docker-compose.yml
+.dockerignore

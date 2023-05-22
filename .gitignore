@@ -1,0 +1,50 @@
+./data/
+
+# Ignore editor and IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore build artifacts
+/node_modules/
+/vendor/
+
+# Ignore OS and IDE-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore compiled files
+*.class
+*.jar
+*.war
+*.ear
+*.exe
+*.dll
+
+# Ignore generated files
+/build/
+/dist/
+
+# Ignore sensitive or environment-specific files
+# .env
+# .env.local
+# .env.*.local
+
+# Ignore backup files
+*.bak
+*.swp
+
+# Ignore package-lock.json for npm projects
+package-lock.json
+
+# Ignore composer lock file for PHP projects using Composer
+composer.lock
+
+# Ignore files and directories specific to your project
+
+# Ignore files and directories generated during runtime
+/runtime/
