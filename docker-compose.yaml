@@ -1,6 +1,7 @@
 version: '3'
 services:
   webserver:
+    container_name: docker-lemp-nginx
     image: nginx
     ports:
       - 80:80
@@ -12,16 +13,16 @@ services:
       - database
 
   php:
+    container_name: docker-lemp-php
     image: php:7.4-fpm
     volumes:
       - ./public:/var/www/html
+      - ./php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
     depends_on:
       - database
-    environment:
-      - PHP_EXTENSIONS=mysqli
-    command: php-fpm --allow-to-run-as-root
 
   database:
+    container_name: docker-lemp-mariadb
     image: mariadb
     ports:
       - 3306:3306
