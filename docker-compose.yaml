@@ -17,6 +17,9 @@ services:
       - ./public:/var/www/html
     depends_on:
       - database
+    environment:
+      - PHP_EXTENSIONS=mysqli
+    command: php-fpm --allow-to-run-as-root
 
   database:
     image: mariadb
