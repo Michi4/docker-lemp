@@ -1,6 +1,7 @@
 version: '3'
 services:
   webserver:
+    container_name: nginx
     image: nginx
     ports:
       - 80:80
@@ -12,6 +13,7 @@ services:
       - database
 
   php:
+    container_name: php
     build:
       context: .
       dockerfile: Dockerfile-php
@@ -21,6 +23,7 @@ services:
       - database
 
   database:
+    container_name: mariadb
     image: mariadb
     ports:
       - 3306:3306
