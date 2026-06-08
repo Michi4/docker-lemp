@@ -30,9 +30,9 @@ Thumbs.db
 /dist/
 
 # Ignore sensitive or environment-specific files
-# .env
-# .env.local
-# .env.*.local
+.env
+.env.local
+.env.*.local
 
 # Ignore backup files
 *.bak
