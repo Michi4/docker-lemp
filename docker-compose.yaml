@@ -16,9 +16,7 @@ services:
 
   php:
     container_name: php
-    build:
-      context: .
-      dockerfile: Dockerfile-php
+    build: .
     restart: unless-stopped
     volumes:
       - ./public:/var/www/html
